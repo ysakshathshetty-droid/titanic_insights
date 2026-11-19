@@ -1,4 +1,4 @@
-const API_URL = "https://titanic-insights-frontend.onrender.com";
+const API_URL = "https://titanic-insights-1.onrender.com";
 
 
 
@@ -171,7 +171,7 @@ async function loadAdditionalAnalytics() {
     try {
 
         const response = await fetch(
-            "https://titanic-insights-frontend.onrender.com/api/analytics"
+            "https://titanic-insights-1.onrender.comapi/analytics"
         );
 
         if (!response.ok) {
