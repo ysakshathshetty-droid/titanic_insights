@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titanic Insights | Survival Prediction</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-slate-950 text-white">
+
+    <nav class="flex justify-between items-center px-8 py-5 border-b border-slate-800">
+        <h1 class="text-2xl font-bold text-teal-400">
+            Titanic<span class="text-white">Insights</span>
+        </h1>
+
+        <div class="flex gap-6 text-slate-300">
+            <a href="#dashboard">Dashboard</a>
+            <a href="#prediction">Prediction</a>
+            <a href="#analytics">Analytics</a>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-6 py-10">
+
+        <section id="dashboard" class="mb-12">
+            <p class="text-teal-400 uppercase tracking-widest text-sm mb-3">
+                Machine Learning Project
+            </p>
+
+            <h2 class="text-4xl font-bold mb-4">
+                Explore Titanic <span class="text-teal-400">Survival</span>
+            </h2>
+
+            <p class="text-slate-400">
+                Analyze passenger survival patterns and predict survival
+                probabilities using machine learning.
+            </p>
+        </section>
+
+        <!-- STATISTICS -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+
+            <div class="stat-card">
+                <p>Total Passengers</p>
+                <h3>891</h3>
+            </div>
+
+            <div class="stat-card">
+                <p>Survived</p>
+                <h3 class="text-teal-400">342</h3>
+            </div>
+
+            <div class="stat-card">
+                <p>Survival Rate</p>
+                <h3>38.38%</h3>
+            </div>
+
+        </section>
+
+        <!-- PREDICTION -->
+        <section id="prediction" class="mb-14">
+
+            <h2 class="text-3xl font-bold mb-3">
+                Passenger Survival Prediction
+            </h2>
+
+            <p class="text-slate-400 mb-6">
+                Enter passenger details to predict survival probability.
+            </p>
+
+            <div class="prediction-card">
+
+                <form id="predictionForm">
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                        <div>
+                            <label>Passenger Class</label>
+                            <select id="Pclass" required>
+                                <option value="1">First Class</option>
+                                <option value="2">Second Class</option>
+                                <option value="3" selected>Third Class</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label>Gender</label>
+                            <select id="Sex" required>
+                                <option value="female">Female</option>
+                                <option value="male">Male</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label>Age</label>
+                            <input type="number" id="Age" min="0" max="100"
+                                placeholder="Enter age" required>
+                        </div>
+
+                        <div>
+                            <label>Ticket Fare</label>
+                            <input type="number" id="Fare" min="0" step="0.01"
+                                placeholder="Enter fare" required>
+                        </div>
+
+                        <div>
+                            <label>Siblings / Spouses</label>
+                            <input type="number" id="SibSp" min="0" value="0" required>
+                        </div>
+
+                        <div>
+                            <label>Parents / Children</label>
+                            <input type="number" id="Parch" min="0" value="0" required>
+                        </div>
+
+                        <div>
+                            <label>Port of Embarkation</label>
+                            <select id="Embarked" required>
+                                <option value="S">Southampton</option>
+                                <option value="C">Cherbourg</option>
+                                <option value="Q">Queenstown</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <button type="submit" id="predictButton" class="predict-btn mt-8">
+                        Predict Survival
+                    </button>
+
+                </form>
+
+                <!-- RESULT -->
+                <div id="resultBox" class="hidden mt-8 result-box">
+
+                    <h3 id="resultTitle" class="text-2xl font-bold"></h3>
+
+                    <p class="text-slate-400 mt-3">
+                        Survival Probability
+                    </p>
+
+                    <h2 id="probability" class="text-4xl font-bold text-teal-400 mt-2"></h2>
+
+                    <div class="w-full bg-slate-700 rounded-full h-3 mt-5">
+                        <div id="probabilityBar"
+                            class="bg-teal-400 h-3 rounded-full"
+                            style="width: 0%">
+                        </div>
+                    </div>
+
+                    <p id="deathProbability" class="text-slate-400 mt-4"></p>
+
+                </div>
+
+                <p id="errorMessage" class="text-red-400 mt-4"></p>
+
+            </div>
+        </section>
+
+        <!-- ANALYTICS -->
+        <section id="analytics">
+
+            <h2 class="text-3xl font-bold mb-3">Passenger Analytics</h2>
+
+            <p class="text-slate-400 mb-8">
+                Visual analysis of Titanic passenger survival.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <div class="chart-card">
+                    <h3 class="text-xl font-semibold mb-5">
+                        Survival Distribution
+                    </h3>
+                    <canvas id="survivalChart"></canvas>
+                </div>
+
+                <div class="chart-card">
+                    <h3 class="text-xl font-semibold mb-5">
+                        Survival by Gender
+                    </h3>
+                    <canvas id="genderChart"></canvas>
+                </div>
+<!-- SURVIVAL BY PASSENGER CLASS -->
+<div class="chart-card">
+
+    <h3 class="text-xl font-semibold mb-5">
+        Survival by Passenger Class
+    </h3>
+
+    <canvas id="classChart"></canvas>
+
+</div>
+
+
+<!-- SURVIVAL BY AGE GROUP -->
+<div class="chart-card">
+
+    <h3 class="text-xl font-semibold mb-5">
+        Survival by Age Group
+    </h3>
+
+    <canvas id="ageChart"></canvas>
+
+</div>
+            </div>
+        </section>
+
+        <footer class="border-t border-slate-800 mt-16 py-8 text-center text-slate-500">
+            Titanic Insights | Machine Learning Survival Prediction
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

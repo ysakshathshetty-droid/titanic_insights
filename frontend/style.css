@@ -1,0 +1,77 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.stat-card,
+.prediction-card,
+.chart-card {
+    background: #111c30;
+    border: 1px solid #26364d;
+    border-radius: 16px;
+    padding: 28px;
+}
+
+.stat-card {
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-card h3 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+.stat-card p {
+    color: #94a3b8;
+}
+
+.prediction-card label {
+    display: block;
+    color: #cbd5e1;
+    margin-bottom: 10px;
+}
+
+.prediction-card input,
+.prediction-card select {
+    width: 100%;
+    background: #0f172a;
+    color: white;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 13px;
+    outline: none;
+}
+
+.prediction-card input:focus,
+.prediction-card select:focus {
+    border-color: #2dd4bf;
+}
+
+.predict-btn {
+    width: 100%;
+    background: #0d9488;
+    padding: 15px;
+    border-radius: 9px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.predict-btn:hover {
+    background: #0f766e;
+}
+
+.predict-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.result-box {
+    background: #0f172a;
+    border: 1px solid #0d9488;
+    border-radius: 12px;
+    padding: 25px;
+}
