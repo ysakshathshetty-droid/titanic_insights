@@ -171,7 +171,7 @@ async function loadAdditionalAnalytics() {
     try {
 
         const response = await fetch(
-            "https://titanic-insights-1.onrender.comapi/analytics"
+            "https://titanic-insights-1.onrender.com/api/analytics"
         );
 
         if (!response.ok) {
